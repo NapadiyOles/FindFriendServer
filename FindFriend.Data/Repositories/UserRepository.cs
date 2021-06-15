@@ -13,7 +13,10 @@ namespace FindFriend.Data.Repositories
     {
         private readonly DataContext _data;
 
-        public UserRepository(DataContext data) => data = _data;
+        public UserRepository(DataContext data)
+        {
+            _data = data;
+        }
 
         public async Task<IEnumerable<User>> GetAllAsync()
         {
@@ -30,6 +33,7 @@ namespace FindFriend.Data.Repositories
         public async Task<User> GetByIdAsync(int id)
         {
             var user = await _data.Users.FindAsync(id);
+            _data.Entry(user).State = EntityState.Detached;
             return user;
         }
 
@@ -50,7 +54,11 @@ namespace FindFriend.Data.Repositories
 
         public async Task<User> GetOneAsync(Expression<Func<User, bool>> expression)
         {
-            var user = await _data.Users.FirstOrDefaultAsync(expression);
+            var user = await _data.Users
+                .Include(u => u.Adds)
+                .Include(u => u.Favourites)
+                .ThenInclude(a => a.Likers)
+                .FirstOrDefaultAsync(expression);
             return user;
         }
     }

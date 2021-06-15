@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using FindFriend.Business.Models;
-using FindFriend.Data;
 using FindFriend.Data.Entities;
 
 namespace FindFriend.Business.Mapping

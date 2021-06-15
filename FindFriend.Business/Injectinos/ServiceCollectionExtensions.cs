@@ -1,6 +1,6 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using FindFriend.Business.Interfaces;
+using FindFriend.Business.Mapping;
 using FindFriend.Business.Services;
 using Microsoft.Extensions.DependencyInjection;
 using FindFriend.Data.Injections;
@@ -13,15 +13,22 @@ namespace FindFriend.Business.Injectinos
         {
             services.AddUnitOfWork(connection);
 
-            services.AddTransient<IAuthService, IAuthService>();
+            services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IAddService, AddService>();
             services.AddTransient<IUserService, UserService>();
         }
 
-        public static void AddAutomapper(this IServiceCollection services,
-            Action<IMapperConfigurationExpression> config)
+        public static void AddAutomapper(this IServiceCollection services, params Profile[] profiles)
         {
-            services.AddSingleton<IMapper>(new Mapper(new MapperConfiguration(config)));
+            services.AddSingleton<IMapper>(new Mapper(new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<MappingProfile>();
+
+                foreach (var profile in profiles)
+                {
+                    cfg.AddProfile(profile);
+                }
+            })));
         }
     }
 }

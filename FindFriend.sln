@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindFriend.Web", "FindFriend.Web\FindFriend.Web.csproj", "{D46EF3F0-F1E8-4205-876E-5FA0E220FB82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindFriend.Data", "FindFriend.Data\FindFriend.Data.csproj", "{5391C625-3B2D-4615-8EA2-CBD227CC8418}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindFriend.Business", "FindFriend.Business\FindFriend.Business.csproj", "{CA5CA475-BC29-4DA5-B01B-9946310B89E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D46EF3F0-F1E8-4205-876E-5FA0E220FB82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D46EF3F0-F1E8-4205-876E-5FA0E220FB82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D46EF3F0-F1E8-4205-876E-5FA0E220FB82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D46EF3F0-F1E8-4205-876E-5FA0E220FB82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5391C625-3B2D-4615-8EA2-CBD227CC8418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5391C625-3B2D-4615-8EA2-CBD227CC8418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5391C625-3B2D-4615-8EA2-CBD227CC8418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5391C625-3B2D-4615-8EA2-CBD227CC8418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA5CA475-BC29-4DA5-B01B-9946310B89E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA5CA475-BC29-4DA5-B01B-9946310B89E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA5CA475-BC29-4DA5-B01B-9946310B89E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA5CA475-BC29-4DA5-B01B-9946310B89E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

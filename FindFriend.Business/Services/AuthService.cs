@@ -15,12 +15,6 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace FindFriend.Business.Services
 {
-    public static class Roles
-    {
-        public const string User = "user";
-        public const string Admin = "admin";
-    }
-
     public class AuthService : IAuthService
     {
         private readonly IUnitOfWork _data;
@@ -44,7 +38,7 @@ namespace FindFriend.Business.Services
             if (await _data.UserRepository.GetOneAsync(u => u.Name == model.Name) is not null)
                 throw new AuthException("User with this name already exists");
 
-            if (string.IsNullOrWhiteSpace(model.Password) && model.Password?.Length < 5)
+            if (string.IsNullOrWhiteSpace(model.Password) || model.Password?.Length < 5)
                 throw new AuthException("Password can't be empty and be less then 5 characters long");
 
             var user = new User {Name = model.Name, Password = Encrypt(model.Password), Role = Roles.User};
@@ -78,7 +72,7 @@ namespace FindFriend.Business.Services
 
             if (user is null) throw new AuthException("User with this name is not registered");
 
-            if (model.Password == Decrypt(user.Password)) throw new AuthException("Password is not correct");
+            if (model.Password != Decrypt(user.Password)) throw new AuthException("Password is not correct");
             
             var authClaims = new List<Claim>
             {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using FindFriend.Data.Entities;
 using FindFriend.Data.Interfaces;
 using FindFriend.Data.Repositories;
 

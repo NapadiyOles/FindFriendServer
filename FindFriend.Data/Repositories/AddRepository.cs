@@ -13,8 +13,11 @@ namespace FindFriend.Data.Repositories
     {
         private readonly DataContext _data;
 
-        public AddRepository(DataContext data) => data = _data;
-        
+        public AddRepository(DataContext data)
+        {
+            _data = data;
+        }
+
         public async Task<IEnumerable<Add>> GetAllAsync()
         {
             var adds = _data.Adds.AsQueryable()
@@ -43,6 +46,7 @@ namespace FindFriend.Data.Repositories
         public async Task<Add> GetByIdAsync(int id)
         {
             var add = await _data.Adds.FindAsync(id);
+            _data.Entry(add).State = EntityState.Detached;
             return add;
         }
 

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using FindFriend.Data.Entities;
+﻿using FindFriend.Data.Entities;
 
 namespace FindFriend.Data.Interfaces
 {

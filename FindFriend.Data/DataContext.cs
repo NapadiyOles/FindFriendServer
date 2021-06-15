@@ -1,4 +1,5 @@
-﻿using FindFriend.Data.Entities;
+﻿using System.Linq;
+using FindFriend.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FindFriend.Data
@@ -12,16 +13,12 @@ namespace FindFriend.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Adds)
                 .WithOne(a => a.Author)
                 .HasForeignKey(a => a.AuthorId);
-
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.Favourites)
-                .WithMany(a => a.Likers);
+            
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
